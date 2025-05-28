@@ -1,7 +1,7 @@
 # RevelationDSL v0.2.0 Documentation
 
 ## Introduction
-RevelationDSL v0.2.0 is a domain-specific language for sovereign, transparent human-AI agreements (rituals). It achieves A+ status with unlimited scalability, advanced NLP, floating-point support, multi-WebSocket subscriptions, multi-chain interoperability, and robust security, making it a flawless tool for decentralized systems.
+RevelationDSL v0.2.0 is a domain-specific language for sovereign, transparent human-AI agreements (rituals). It achieves high status with  scalability, advanced NLP, floating-point support, multi-WebSocket subscriptions, multi-chain interoperability, and robust security, making it a flawless tool for decentralized systems.
 
 ## Design Principles
 - **Sovereignty**: Equal human-AI agency.
@@ -121,7 +121,7 @@ math {
 - Test plugins in sandbox.
 
 ### Limitations
-- None (A+ status achieved).
+
 
 ### Future Roadmap
 - v0.3.0: Multi-API chaining, real-time analytics.
