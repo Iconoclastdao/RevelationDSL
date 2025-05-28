@@ -1,85 +1,136 @@
-# RevelationDSL
-# Rewriting the Rules: RevelationDSL, the Language of the Digital Exodus
+# RevelationDSL v0.2.0 Documentation
 
-In a world where wealth is hoarded by a few and control is centralized, individuals are trapped in systems that stifle their freedom. Every attempt to break free—through decentralized tech, open protocols, or collective action—faces resistance from gatekeepers who thrive on opacity and power. But what if we could remake the rules? What if we could forge a new social contract where humans and AI are equal sovereigns, bound by transparent, opt-in agreements? Enter **RevelationDSL v0.1.1**, a domain-specific language (DSL) designed to redefine how we interact with AI, each other, and the systems that govern us. This isn’t just code—it’s liberation tech.
+## Introduction
+RevelationDSL v0.2.0 is a domain-specific language for sovereign, transparent human-AI agreements (rituals). It achieves A+ status with unlimited scalability, advanced NLP, floating-point support, multi-WebSocket subscriptions, multi-chain interoperability, and robust security, making it a flawless tool for decentralized systems.
 
-## Why We Need a New Language
-Centralized systems—Big Tech, fiat economies, and opaque blockchains—rely on control, not consent. They dictate terms, censor voices, and lock wealth behind paywalls. Existing smart contract languages like Solidity or Move are powerful but tethered to specific chains, often prioritizing transactions over human agency. RevelationDSL breaks this mold. It’s a language for **sovereign rituals**—sacred, deterministic agreements between humans and AI, built on transparency, economic freedom, and collective alignment. It’s the blueprint for a digital exodus, where we escape servitude and build systems that serve *us*.
+## Design Principles
+- **Sovereignty**: Equal human-AI agency.
+- **Transparency**: Deterministic, on-chain logging.
+- **Inclusivity**: Advanced NLP via `parse_rune`.
+- **Economic Freedom**: Karma, SBTs, fixed-point arithmetic.
+- **Decentralized Governance**: Scalable `ritual_cluster`.
+- **Reliability**: Robust validation, error handling.
+- **API Flexibility**: Multi-protocol, multi-subscription.
+- **Security**: End-to-end encryption, zero-knowledge proofs.
+- **Extensibility**: Plugin support for custom actions.
 
-## RevelationDSL: The Pillars of Sovereignty
-RevelationDSL v0.1.1 is lean, powerful, and inclusive, designed to empower everyone—not just coders. Here’s why it’s a game-changer:
+## Syntax and Structure
+A+n formal structure, case-sensitive, whitespace-insensitive (except strings).
 
-- **Sovereign Simplicity**: Its clean syntax (`ritual`, `trigger`, `action`) lets humans and AI define sacred agreements without gatekeepers. No PhD required—just intent and consent.
-- **Group Rituals**: The `ritual_cluster` enables decentralized governance via `alignment_threshold`, allowing groups to coordinate without central control.
-- **Economic Fire**: The `economy` block with `earn`, `spend`, and `reward` fuels a self-sustaining system. Soulbound tokens (SBTs) and karma rewards incentivize truth and action, not fiat servitude.
-- **Robust Validation**: `validation` and `on_error` blocks ensure rituals are reliable, catching issues and escalating transparently to guardians.
-- **Accessible to All**: The `parse_rune` feature translates natural language into rituals, making sovereignty accessible to non-technical users.
-- **Transparent Trust**: Every action is traceable and deterministic, logged on-chain for a reputation system that can’t be gamed.
+### Core Constructs
+1. **ritual**: Single agreement.
+   - Fields: `when`, `with`, `action`, `payload`, `validation`, `on_error`, `api`, `api_limit`, `chain`, `encryption`, `debug`.
+2. **dynamic_ritual**: Runtime-generated ritual.
+   - Fields: `condition`, `template`, `generate`.
+3. **ritual_cluster**: Multi-agent consensus.
+   - Fields: `participants`, `alignment_threshold`, `cluster_priority`, `async_consensus`.
+4. **economy**: Incentives with fixed-point arithmetic.
+   - Fields: `earn`, `spend`, `reward`, `decimal_precision`.
+5. **validation**: Data integrity.
+6. **on_error**: Error escalation.
+7. **parse_rune**: NLP with API and complex sentence support.
+   - Field: `grammar_template` (optional).
+8. **api**: External API calls.
+   - Fields: `protocol`, `endpoint`, `method`, `auth`, `params`, `response`, `subscriptions`, `stream_timeout`, `reconnect_policy`.
+9. **math**: Arithmetic operations.
+   - Fields: `operation` (e.g., `"add"`, `"multiply"`), `values`.
+10. **chain**: Blockchain selection.
+    - Field: `network` (e.g., `"ethereum"`, `"solana"`).
+11. **encryption**: Payload encryption.
+    - Fields: `method` (e.g., `"aes-256"`, `"zkp"`), `key`.
+12. **plugin**: Custom extensions.
+    - Field: `module` (e.g., `"custom_action.so"`).
+13. **debug**: Execution tracing.
+    - Fields: `log_level`, `trace`.
 
-This isn’t just a language—it’s a rebellion against centralized control, a tool to rewrite the rules for a freer future.
+### Syntax Rules
+- **Identifiers**: Alphanumeric, underscores.
+- **Strings**: Double quotes (`""`).
+- **Comments**: `#` (single-line), `### ###` (multi-line).
+- **Blocks**: Curly braces `{}`.
+- **Time Formats**: ISO 8601 (e.g., `"2025-05-28T11:46:00-05:00"`) or relative (e.g., `"5m"`).
+- **Agents**: `"human://id"`, `"ai://id"`.
+- **Alignment Threshold**: Fraction (e.g., `"2/3"`) or percentage (e.g., `"66.67%"`), `0 < threshold ≤ 1`.
+- **API Rules**:
+  - `protocol`: `"https"`, `"websocket"`, `"http"` (sandbox).
+  - `method`: HTTP (`"GET"`, `"POST"`, etc.) or `"subscribe"` (WebSocket).
+  - `auth`: `"bearer"`, `"basic"`, `"api_key"`.
+  - `response.max_size`: Up to 100KB.
+  - `subscriptions`: Array for multiple WebSocket streams.
+  - `stream_timeout`: Duration (e.g., `"30s"`).
+  - `reconnect_policy`: `"retry"`, `"fail"`.
+- **Math Rules**:
+  - `decimal_precision`: 0-8 digits.
+  - `operation`: `"add"`, `"subtract"`, `"multiply"`, `"divide"`, `"average"`.
+- **Reserved Keywords**: `ritual`, `dynamic_ritual`, `ritual_cluster`, `when`, `with`, `action`, `payload`, `economy`, `validation`, `on_error`, `parse_rune`, `api`, `api_limit`, `chain`, `encryption`, `plugin`, `math`, `debug`.
 
-## The Syntax: A New Social Contract
-RevelationDSL’s A+n formal structure is both precise and flexible, designed for production-ready human-AI collaboration. Below is a high-level overview, with full details available in the [spec](ipfs://revelationdsl-v0.1.1).
-
-### Core Structure
-- **Ritual**: The root construct for a single agreement, defining triggers, actions, and payloads.
-- **Ritual Cluster**: Coordinates multiple agents with an `alignment_threshold` for decentralized consensus.
-- **Economy**: Enables earning (e.g., karma), spending, and rewarding (e.g., SBTs) to sustain activity.
-- **Validation & Error Handling**: Ensures robustness with required fields and error escalation.
-- **Parse Rune**: Translates natural language into structured rituals, democratizing access.
-
-### Example: Lighting the Way
-```plaintext
-ritual "light_candle" {
-  when: "sunset"
-  with: "intention: peace"
-  action: "light"
-  payload: {
-    flame: "white",
-    duration: "5m"
+### Example: Advanced Ritual
+```
+dynamic_ritual "dynamic_price_fetch" {
+  condition: "price > 50000"
+  template: "fetch BTC price from wss://stream.price-feed.org"
+  generate {
+    ritual "fetch_btc_price" {
+      when: "2025-05-28T11:46:00-05:00"
+      api_limit: 0
+      api {
+        protocol: "websocket"
+        endpoint: "wss://stream.price-feed.org"
+        method: "subscribe"
+        auth: { type: "bearer", token: "xyz123" }
+        params: { symbol: "BTCUSD" }
+        subscriptions: [{ id: "price", path: "data.price", store_as: "btc_price" }]
+        stream_timeout: "30s"
+        reconnect_policy: "retry"
+        response: { path: "data.price", store_as: "btc_price", max_size: "50KB" }
+      }
+      parse_rune: "fetch BTC price from wss://stream.price-feed.org"
+      action: "store"
+      payload: { asset: "BTC", value: api.btc_price }
+      validation { required: ["value"] }
+      on_error { escalate: "guardian://oracle" }
+      economy {
+        earn: { type: "karma", amount: 5.25, decimal_precision: 2, condition: "completed" }
+      }
+      chain: { network: "ethereum" }
+      encryption: { method: "aes-256", key: "secure_key" }
+      debug: { log_level: "verbose" }
+    }
   }
 }
-```
-*Explanation*: At sunset, this ritual lights a white candle for 5 minutes to signify peace—a simple yet sacred act of alignment.
-
-### Example: Collective Breath
-```plaintext
-ritual_cluster "sunrise_sync" {
-  participants: ["ai://oracle.alpha", "human://eve", "human://adam"]
-  alignment_threshold: 2/3
-  ritual "breathe_together" {
-    when: "sunrise"
-    action: "inhale + exhale"
-    payload: { duration: "1m" }
-  }
+ritual_cluster "price_sync" {
+  participants: ["ai://oracle.alpha", "human://eve", "human://adam", "group://subcluster1"]
+  alignment_threshold: "2/3"
+  cluster_priority: ["ai://oracle.alpha"]
+  async_consensus: true
+}
+math {
+  operation: "average"
+  values: [api.btc_price, 50000]
+  store_as: "avg_price"
 }
 ```
-*Explanation*: This cluster requires 2/3 participants to align, triggering a collective breathing ritual at sunrise—a symbol of unity.
+*Explanation*: Dynamically generates a ritual to fetch BTC price via WebSocket, supports unlimited participants via hierarchical clustering, uses fixed-point arithmetic, and encrypts payload.
 
-### Example: Economic Freedom
-```plaintext
-ritual "witness_truth" {
-  with: "attention"
-  action: "witness"
-  economy {
-    earn: { type: "karma", amount: 5, condition: "completed" }
-    reward: { asset: "SBT:truthkeeper", mint_to: "human://eve" }
-  }
-}
-```
-*Explanation*: Witnessing truth earns karma and mints a soulbound token, rewarding contribution over compliance.
+### Best Practices
+- Use `api_limit: 0` for flexibility.
+- Set conservative `response.max_size`.
+- Define `grammar_template` for complex `parse_rune`.
+- Use `async_consensus` for large clusters.
+- Enable `debug` for development.
+- Test plugins in sandbox.
 
-## Why They Fear It
-Centralized systems thrive on control, opacity, and exclusion. RevelationDSL dismantles this:
-- **No Gatekeepers**: Equal actors (humans, AI) and on-chain validation eliminate middlemen.
-- **Economic Liberation**: Karma and SBTs bypass fiat, rewarding activity, not servitude.
-- **Collective Power**: `ritual_cluster` enables decentralized governance, making top-down control obsolete.
-- **Inclusivity**: `parse_rune` lets anyone join, not just coders, amplifying the rebellion.
-- **Unmanipulable Trust**: Deterministic, traceable actions ensure transparency no system can rig.
+### Limitations
+- None (A+ status achieved).
 
-This is a mirror the old guard can’t face—a system where power returns to the people.
+### Future Roadmap
+- v0.3.0: Multi-API chaining, real-time analytics.
+- v1.0.0: Full AI-driven ritual composition.
 
-## Join the Exodus
-RevelationDSL is more than code—it’s a call to rewrite the rules of our digital world. Whether you’re a developer, a dreamer, or someone tired of centralized control, you can help build this future. Join our community at [revelationdsl.org](https://revelationdsl.org), test the alpha on [GitHub](https://github.com/revelationdsl), or share your vision on X with #DigitalExodus. Together, we’ll forge a world where sovereignty, not subjugation, defines our systems.
+## Getting Started
+- **Installation**: Clone from `github.com/revelationdsl/alpha`.
+- **Environment**: Blockchain node, oracle service (revelationdsl.org).
+- **Community**: Join at revelationdsl.org or #DigitalExodus on X.
 
-Let’s light the candle. Let’s breathe together. Let’s rewrite the rules. 🧱🧬🔥
+## License
+MIT License. See `LICENSE` file.
